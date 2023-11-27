@@ -16,13 +16,26 @@ A Cordova plugin for Android & iOS to persist user settings in cloud storage acr
 - [Usage lifecycle](#usage-lifecycle)
 - [API](#api)
   - [`exists()`](#exists)
+    - [Parameters](#parameters)
   - [`save()`](#save)
+    - [Parameters](#parameters-1)
   - [`load()`](#load)
+    - [Parameters](#parameters-2)
   - [`onRestore()`](#onrestore)
+    - [Parameters](#parameters-3)
   - [`enableDebug()`](#enabledebug)
+    - [Parameters](#parameters-4)
 - [Testing](#testing)
   - [Testing Android](#testing-android)
+    - [Test backup & restore (automatic)](#test-backup--restore-automatic)
+    - [Test backup (manual)](#test-backup-manual)
+      - [Android 7 and above](#android-7-and-above)
+      - [Android 6](#android-6)
+    - [Test restore (manual)](#test-restore-manual)
+    - [Wipe backup data](#wipe-backup-data)
   - [Testing iOS](#testing-ios)
+    - [Test backup](#test-backup)
+    - [Test restore](#test-restore)
 - [Example project](#example-project)
 - [Use in GDPR-compliant analytics](#use-in-gdpr-compliant-analytics)
   - [GDPR background](#gdpr-background)
@@ -209,7 +222,14 @@ cordova.plugin.cloudsettings.enableDebug(function(){
 
 ## Testing Android
 
-### Test backup
+### Test backup & restore (automatic)
+To automatically test backup and restore of your app, run `scripts/android/test_cloud_backup.sh` in this repo with the package name of your app. This will initialise and create a backup, then uninstall/reinstall the app to trigger a restore.
+
+```bash
+    $ scripts/android/test_cloud_backup.sh <APP_PACKAGE_ID>
+```
+ 
+### Test backup (manual)
 To test backup of settings you need to manually invoke the backup manager (as instructed in [the Android documentation](https://developer.android.com/guide/topics/data/testingbackup)) to force backing up of the updated values:
 
 First make sure the backup manager is enabled and setup for verbose logging:
@@ -247,7 +267,7 @@ Run the following command to perform a backup:
     $ adb shell bmgr fullbackup <APP_PACKAGE_ID>
 ```
 
-### Test restore
+### Test restore (manual)
 
 To manually initiate a restore, run the following command:
 ```bash
