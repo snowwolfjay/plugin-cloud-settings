@@ -36,12 +36,14 @@
             <application
                     android:allowBackup="true"
                     android:backupAgent="cordova.plugin.cloudsettings.BackupAgentHelper"
-                    android:fullBackupOnly="true"
-                    android:fullBackupContent="@xml/backup_rules"
+                    android:fullBackupOnly="false"
+                    android:fullBackupContent="@xml/backup_rules_lte_api_30"
+        			android:dataExtractionRules="@xml/backup_rules_gte_api_31"
             />
         </edit-config>
 
-        <resource-file src="src/android/backup_rules.xml" target="res/xml/backup_rules.xml" />
+        <resource-file src="src/android/backup_rules_lte_api_30.xml" target="res/xml/backup_rules_lte_api_30.xml" />
+        <resource-file src="src/android/backup_rules_gte_api_31.xml" target="res/xml/backup_rules_gte_api_31.xml" />
         <source-file src="src/android/CloudSettingsPlugin.java" target-dir="src/cordova/plugin/cloudsettings" />
         <source-file src="src/android/BackupAgentHelper.java" target-dir="src/cordova/plugin/cloudsettings" />
     </platform>

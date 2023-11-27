@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup disableIfNoEncryptionCapabilities="false">
+        <exclude domain="root"/>
+        <exclude domain="sharedpref"/>
+        <exclude domain="database"/>
+        <exclude domain="external"/>
+        <include domain="file" path="cloudsettings.json"/>
+    </cloud-backup>
+</data-extraction-rules>
